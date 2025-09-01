@@ -141,6 +141,10 @@ for (let i = 0; i < senha.length; i++) {
 
  // =================== SOLICITANDO NOMES ==============================
 
+ //o while foi usado porque não tem um número fixo de repetições.
+ //
+
+
 const entradas = ["Ana", "Bruno", "Carla", "fim", "Daniel"];
 let i = 0;
  
@@ -148,3 +152,61 @@ while (entradas[i] !== "fim") {
   console.log("Nome:", entradas[i]);
   i++;
 }
+
+/*
+SOLUÇÃO COM O FOR 
+
+ const entradas = ["Ana", "Bruno", "Carla", "fim", "Daniel"];
+
+for (let i = 0; i < entradas.length; i++) {
+  if (entradas[i] === "fim") break;
+  console.log("Nome:", entradas[i]);
+}
+
+*/
+//================== VERIFICANDO ACESSO RESTRITO ================
+
+const contagem = 20;
+const aviso = 'Número proibido encontrado! Encerrando...'
+
+for (let i = 1; i <= 20 ; i++) {
+
+    if ( i === 10 ) break;
+    console.log(i);
+
+}
+
+console.log(aviso);
+
+
+//================== SOMANDO NUMEROS ================
+
+//do...while garante pelo menos uma execução, mas for é mais direto quando o número de dias é fixo.
+
+const totalDias = 10;
+let dia = 1;
+let economia = 0;
+ 
+do {
+  economia += dia;
+   console.log(`Dia ${dia}: economizou R$${dia} (Total acumulado: R$${economia})`)
+  dia++;
+} while (dia <= totalDias);
+ 
+console.log(`Total economizado: R$ ${economia}`);
+
+/*
+
+com o for
+
+const totalDias = 10;
+let economia = 0;
+
+for (let dia = 1; dia <= totalDias; dia++) {
+  economia += dia;
+}
+
+console.log(`Total economizado: R$ ${economia}`);
+
+
+*/
