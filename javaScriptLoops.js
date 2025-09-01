@@ -142,7 +142,8 @@ for (let i = 0; i < senha.length; i++) {
  // =================== SOLICITANDO NOMES ==============================
 
  //o while foi usado porque não tem um número fixo de repetições.
- //
+ //testa a condição e depois executa
+ // do while faz e depois testa a condição;
 
 
 const entradas = ["Ana", "Bruno", "Carla", "fim", "Daniel"];
@@ -208,5 +209,56 @@ for (let dia = 1; dia <= totalDias; dia++) {
 
 console.log(`Total economizado: R$ ${economia}`);
 
-
 */
+
+//================== TEMPORIZADOR DE AQUECIMENTO ================
+
+//  precisamos garantir que o bloco de código seja executado pelo menos uma vez
+//   do...while é ideal para esse tipo de situação onde a repetição precisa acontecer 
+// pelo menos uma vez antes da condição ser testada.
+
+const tempoMinimo = 5;
+const temperaturaIdealAlcancadaEm = 3;
+ 
+let segundos = 0;
+ 
+do {
+    segundos++;
+    console.log(`Aquecendo... segundo ${segundos}`);
+ 
+    if (segundos === temperaturaIdealAlcancadaEm) {
+        console.log("Temperatura ideal atingida.");
+    }
+ 
+} while (segundos < tempoMinimo);
+ 
+console.log(`Tempo total de aquecimento: ${segundos} segundos`);
+
+
+//================== REGISTRO DE CAIXAS PROCESSADAS ================
+
+/* Você recebeu a tarefa de automatizar o painel de uma linha de empacotamento em um centro de distribuição. A cada ciclo, uma nova caixa é processada. A linha só pode processar no máximo 5 caixas válidas por vez. Mas, algumas caixas com número de identificação negativo precisam ser ignoradas, pois estão danificadas.
+
+Crie um programa que simule o processamento das caixas, exibindo as válidas e ignorando as danificadas. O programa deve parar o processamento assim que 5 caixas válidas forem processadas.*/
+
+const caixas = [12, -1, 8, 0, -5, 3, 7, 14];
+let processadas = 0;
+ 
+for (let i = 0; i < caixas.length; i++) {
+  let valor = caixas[i];
+ 
+  if (valor < 0) {
+    console.log("Caixa danificada, ignorada.");
+    continue;
+  }
+ 
+  console.log(`Caixa processada: ${valor}`);
+  processadas++;
+ 
+  if (processadas === 5) {
+    console.log("Limite de caixas processadas atingido!");
+    break;
+  }
+}
+
+//=
