@@ -300,23 +300,29 @@ avaliarDesempenho(20, gerarMensagem); */
 
 
 function calcularConsumo(potencia, horasPorDia) {
-    console.log((potencia * horasPorDia * 30) / 1000)
+    return (potencia * horasPorDia * 30) / 1000;
 }
 
-function classificarConsumo(consumo) {
+function classificarConsumo(consumo) { //eu errei por colocar console.log ao invés de retorno;
     if (consumo < 50 ) {
-        console.log("Baixo consumo");
-    } else if (consumo >= 50 && consumo < 200) { console.log("Consumo moderado")}
-    else { console.log("Alto consumo")}
+        return "Baixo consumo";
+    } else if (consumo >= 50 && consumo < 200) { return "Consumo moderado"}
+    else {  return "Alto consumo";
+    }
 }
 
 function exibirResumo(nomeAparelho, consumo, classificacao) {
-        return console.log(`${nomeAparelho} tem consumo de ${consumo} 
+        return console.log(`${nomeAparelho} tem consumo de ${consumo.toFixed(1)} 
             kWh/mês e é classificada como ${classificacao} `)
-
-} 
+} //o to fixe (1) add uma casa decimal
 
 const nomeAparelho = "Geladeira";
 const consumo = calcularConsumo(150, 4);
 const classificacao = classificarConsumo(consumo);
 exibirResumo(nomeAparelho, consumo, classificacao);
+
+//================= SORTEIO ====================
+
+
+// VOU FICAR DEVENDO DUAS ATIVIDADES PARA CORRER COM O CONTEÚDO E DEPOIS VOLTO, OK
+//SORTEIO E CONTAGEM REGRESSIVA RECURSIVA

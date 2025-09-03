@@ -376,3 +376,206 @@ Ele vai ser reutilizado? será usado completo.
 Se for colocado em outra função: setar numa variável. 
 Há possibilidades e diferenças para ter a capacidade para melhor usar. 
 Nem fazer tudo arrow function, e nem tudo function completa. Entender o que é cada coisa. 
+
+
+**==================== ARRAYS ===========================**
+
+Conceito: arrays são coloções ordenadas de valores.
+Cada valor é chamado elemento e tem sua posição na lista determinada por um índice.
+No jS o javaScripe começa sempre em 0.
+O javaScript permite diferentes tipos de dados no array
+
+Sintaxe
+```javascript
+
+const arr = [ elemento, elemento, elemento, elemento, elemento ];
+
+const arrNumeros = [1, 2, 3];
+const arrMisto = [5, true, 'texto'];
+
+//Array de arrays
+const arrArrays = [[1, 2], ['a', 'b', 'c'], [true, false]];
+
+//Array com objetos dentro
+
+const arrObjetos = [{ a: 1 }, { b: 2 }, { c: 3 }];
+
+//Manipulando arrays
+
+//                   0   1   2   3
+const arrNumeros = [46, 34, 23, 12];
+
+console.log(arrNumeros[0]); // 46
+console.log(arrNumeros[1]); // 34
+console.log(arrNumeros[2]); // 23
+console.log(arrNumeros[3]); // 12
+
+//Reatribuindo valores no array
+
+arrNumeros[1] = 36;
+
+// Se quisermos adicionar um novo elemento no final do array, podemos atribuir um valor a um índice que ainda não existe:
+arrNumeros[4] = 100;
+console.log(arrNumeros);
+//[ 46, 36, 23, 12, 100 ]
+```
+
+
+***----------------------- MANIPULANDO ARRAY COM FOR ----------------------------**
+
+
+```javascript
+const arrNumeros = [46, 34, 23, 12];
+
+for (let i = 0; i < arrNumeros.length; i++) {
+    console.log(arrNumeros[i]);
+}
+
+
+//o for irá percorrer o array linha por linha. Irá acessar cada índice do array
+//Para parar um array usando o for, devemos lembrar da propriedade .length. 
+
+for (let i = 0; i < arrNumeros.length; i++) {
+    arrNumeros[i] = arrNumeros[i] * 10; //reatribução de valores ao elemento
+}
+
+//[ 460, 340, 230, 120 ]
+console.log(arrNumeros);
+
+const estudantes = ["JULIANA", "aline", "SOLANGE"];
+
+for (let i = 0; i < estudantes.length; i++) {
+    estudantes[i] = estudantes[i].toUpperCase();
+}
+
+// [ 'JULIANA', 'ALINE', 'SOLANGE' ]
+console.log(estudantes);
+
+```
+
+***------------------------------ FOR OF -----------------------------------**
+```javascript
+
+// funciona com qualquer iterável do JavaScript. Iteráveis incluem arrays, strings e algumas outras estruturas de dados, como mapas e conjuntos (maps e sets)
+
+//Podemos simplesmente percorrer um array e realizar operações dentro dele. A sintaxe é semelhante à do for original: começaremos com for, abriremos parênteses, mas agora, em vez de três instruções, teremos apenas uma.
+
+const arrayNumeros = [18, 95, 45, 76, 23, 99];
+
+for (let numero of arrayNumeros) {
+    if (numero + 10 > 100 || numero > 100) continue;
+    console.log(numero + 10);
+}
+```
+```javaScript
+function criaArrNum(inicio, fim) {
+  const arr = [];
+  let elemento = inicio;
+
+  for(let i = 0, j = 0; j < fim; i++, elemento++) {
+    arr[i] = elemento;
+    j = elemento;
+  }
+  return arr;
+}
+
+```
+Entendendo o papel de i e j
+
+Na função criaArrNum(), as variáveis i e j desempenham papéis distintos, mas complementares, para a criação do array com a sequência numérica desejada.
+
+i como índice do array: A variável i é utilizada como um índice para percorrer o array que está sendo criado. Ela começa em 0 e é incrementada a cada iteração do loop (i++). O valor de i indica a posição em que um novo elemento será inserido no array.
+
+j como elemento numérico: A variável j é utilizada para controlar a sequência numérica que será inserida no array. Ela começa com o valor inicial desejado (inicio) e é incrementada a cada iteração do loop (elemento++). O valor de j representa o número que será inserido na posição i do array.
+
+Exemplo prático
+
+Vamos supor que você queira criar um array com os números de 5 a 10. Nesse caso, a função criaArrNum() seria chamada da seguinte forma:
+
+cpp
+Copiar código
+console.log(criaArrNum(5, 10));
+Dentro da função, o loop for seria executado da seguinte maneira:
+
+Inicialização: i = 0, j = 5
+Condição: j < 10 (verdadeiro)
+Inserção: arr[0] = 5
+Atualização: i++, elemento++ (agora i = 1 e j = 6)
+Condição: j < 10 (verdadeiro)
+Inserção: arr[1] = 6
+Atualização: i++, elemento++ (agora i = 2 e j = 7)
+Repetição: O loop continua até que j seja igual a 10.
+Resultado: O array final será [5, 6, 7, 8, 9, 10]
+Analogia
+
+Imagine que você está montando um quebra-cabeça. A variável i representa a posição da peça que você vai colocar no quebra-cabeça, enquanto a variável j representa o número da peça que você vai encaixar nessa posição. Você começa colocando a peça número 5 na primeira posição, depois a peça número 6 na segunda posição, e assim por diante, até completar o quebra-cabeça.
+
+
+***--------------------------- MÉTODOS COM ARRAY -----------------------------------**
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#static_methods
+
+.push - Adiciona um ou mais elementos ao final de um array.
+
+```javascript
+const arrNumeros = [12, 23, 34, 45, 56];
+arrNumeros.push(67);
+console.log(arrNumeros); // Saída: [12, 23, 34, 45, 56, 67]
+```
+
+.pop -  Remove o último elemento de um array.
+
+```javascript
+const arrNumeros = [12, 23, 34, 45, 56];
+arrNumeros.pop();
+console.log(arrNumeros); // Saída: [12, 23, 34, 45]
+```
+
+.indexOF - Retorna o primeiro índice em que um determinado elemento pode ser encontrado no array. Caso o elemento não esteja presente, retorna -1.
+
+```javascript
+const arrNumeros = [12, 23, 34, 45, 56];
+const indice = arrNumeros.indexOf(34);
+console.log(indice); // Saída: 2
+
+```
+.slice - Retorna uma cópia de uma parte do array, em um novo array.
+
+```javascript
+const arrNumeros = [12, 23, 34, 45, 56];
+const novoArr = arrNumeros.slice(2);
+console.log(novoArr); // Saída: [34, 45, 56]
+
+```
+Métodos comfunções callback 
+
+.map - Cria um novo array com os resultados de uma função aplicada a cada elemento do array original.
+
+```javascript
+const arrNumeros = [12, 23, 34, 45, 56];
+const arrCalculado = arrNumeros.map(num => num * 10);
+console.log(arrCalculado); // Saída: [120, 230, 340, 450, 560]
+```
+
+.forEach - Executa uma função para cada elemento do array.
+
+```javascript
+const arrNumeros = [12, 23, 34, 45, 56];
+arrNumeros.forEach((num, i) => {
+  console.log(`O número ${num} está no índice ${i}`);
+});
+// Saída:
+// O número 12 está no índice 0
+// O número 23 está no índice 1
+// O número 34 está no índice 2
+// O número 45 está no índice 3
+// O número 56 está no índice 4
+
+```
+.filter - Cria um novo array com todos os elementos que passam em um teste implementado por uma função.
+
+```javascript
+const arrNumeros = [12, 23, 34, 45, 56];
+const arrFiltrado = arrNumeros.filter(num => num % 5 === 0);
+console.log(arrFiltrado); // Saída: [45]
+```
