@@ -579,3 +579,202 @@ const arrNumeros = [12, 23, 34, 45, 56];
 const arrFiltrado = arrNumeros.filter(num => num % 5 === 0);
 console.log(arrFiltrado); // Saída: [45]
 ```
+
+**==================== OBJETOS ===========================**
+
+Conceito: Objetos são coleções não ordenadas de valores - ao contrário de arrays, que são coleções ordenadas. Eles são organizados em pares de chave-valor.
+O termo "propriedade" serve para denominar as pares de chave-valor, que não são funções, ou seja, onde o valor seja um dado.
+
+Estrutura:
+
+```javascript
+const obj = {
+  chave: valor,
+  chave: valor,
+  chave: valor
+};
+
+const cliente = {
+  nome: 'Joana A',
+  cpf: '12345678987',
+  email: 'j@j.com',
+};
+
+//Um objeto também pode ter arrays como valores.
+
+const cliente = {
+  nome: 'Joana A',
+  cpf: '12345678987',
+  email: 'j@j.com',
+  score: 865,
+  recorrente: true,
+  endereco: {
+    logradouro: 'Rua A',
+    num: '125A',
+    complemento: 'apto 24',
+    //restante endereco
+  },
+  tags: ['premium', 'clube'],
+};
+
+const clientes = [
+  {
+    nome: 'Joana A',
+    cpf: '12345678987',
+    email: 'j@j.com',
+  },
+  {
+    nome: 'Bruno B',
+    cpf: '23456789123',
+    email: 'b@b.com',
+  },
+  {
+    nome: 'Carlos M',
+    cpf: '56789012345',
+    email: 'c@c.com',
+  },
+];
+
+//Para acessar o nome do cliente e incluí-lo em uma saudação, utilizamos cliente.nome. Isso retornará o valor que está associado à chave nome que, nesse caso, é a string com o nome da pessoa.
+
+console.log(cliente.nome); //string
+console.log(cliente.score); //número
+console.log(cliente.endereco); //objeto
+console.log(cliente.tags); //array
+
+console.log(cliente.endereco.logradouro); //string
+
+//a chave tags, que é um array de strings, podemos entrar em cliente.tag no índice 0 para retornar a string da primeira posição desse array.
+console.log(cliente.tags[0]); //string
+
+//add propriedades
+
+cliente.celular = '5511999999999';
+console.log(cliente);
+
+//A notação de colchetes, especialmente útil quando a chave é um texto com espaços.
+const cliente = {
+  'nome completo': 'Joana A',
+  cpf: '12345678987',
+  email: 'j@j.com',
+};
+
+console.log(cliente['nome completo']);
+
+//Acessando dados variáveis
+//cliente, que possui uma chave nome. A partir do momento que essa chave sai da estrutura de objetos, ela precisa ser usada como string. Nesse caso, criamos uma variável para armazenar essa chave para simular que o nome dessa chave vem de outro lugar.
+
+const descrChave = 'nome';
+
+const cliente = {
+  nome: 'Joana A',
+  cpf: '12345678987',
+  email: 'j@j.com',
+};
+
+console.log(cliente[descrChave]); //Joana A
+```
+
+***----------------------- MÉTODOS OBJETOS-------------------------------**
+Objetos também podem receber como valor de uma chave, uma função. O método pode interagir com as propriedade.
+
+Métodos são funções que sempre são executadas no contexto do objeto. Assim, essa função pode interagir com as demais propriedades desse objeto.
+
+O this é uma palavra-chave que serve para manter o contexto de execução da função ao objeto.
+
+```javascript
+const cliente = {
+  nome: 'Joana A',
+  score: 865,
+  recorrente: true,
+  tags: ['premium', 'clube'],
+  saudarCliente: function() {
+    console.log(`boas vindas, ${this.nome}`);
+  }
+};
+
+cliente.saudarCliente();
+//boas vindas, Joana A
+
+const cliente = {
+  nome: "Joana A",
+  score: 865,
+  recorrente: true,
+  tags: ["premium", "clube"],
+  saudarCliente() {
+    console.log(`boas vindas, ${this.nome}`);
+  }
+};
+
+cliente.informarScore = function informarScore() {
+  console.log(`seu score é ${this.score}`);
+};
+
+cliente.informarScore();
+//seu score é 865
+
+```
+
+
+***----------------------- MÉTODOS OBJETCT-------------------------------**
+
+Object.keys(objeto) - Retorna um array contendo todas as chaves (nomes das propriedades) do objeto.
+
+```javascript
+const chaves = Object.keys(objeto);
+console.log(chaves); // Output: ['chave1', 'chave2', ...]
+
+const cliente = {
+  nome: 'Joana A',
+  cpf: '12345678987',
+  email: 'j@j.com',
+  score: 865,
+  recorrente: true,
+  tags: ['premium', 'clube'],
+};
+
+console.log(Object.keys(cliente));
+// Saída: ['nome', 'cpf', 'email', 'score', 'recorrente', 'tags']
+
+
+```
+
+Object.values(objeto) - Retorna um array contendo todos os valores das propriedades do objeto.
+
+```javascript
+const valores = Object.values(objeto);
+console.log(valores); // Output: [valor1, valor2, ...]
+```
+
+Object.entries(objeto) - Retorna um array de arrays, onde cada sub-array contém um par chave/valor do objeto.
+
+```javascript
+const entradas = Object.entries(objeto);
+console.log(entradas); // Output: [['chave1', valor1], ['chave2', valor2], ...]
+
+console.log(Object.entries(cliente));
+// Saída: [['nome', 'Joana A'], ['cpf', '12345678987'], ['email', 'j@j.com'], ['score', 865], ['recorrente', true], ['tags', ['premium', 'clube']]]
+```
+
+for...in - uma estrutura de repetição que permite iterar sobre todas as propriedades enumeráveis de um objeto.
+
+```javascript
+for (const chave in objeto) {
+  console.log(chave, objeto[chave])
+}
+
+const cliente = {
+  nome: 'Joana A',
+  cpf: '12345678987',
+  email: 'j@j.com',
+  score: 865,
+  recorrente: true,
+  tags: ['premium', 'clube'],
+};
+
+for (const info in cliente) {
+  const texto = `chave ${info}, valor do tipo ${typeof cliente[info]}`;
+  console.log(texto);
+}
+
+```

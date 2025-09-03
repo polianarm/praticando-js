@@ -309,3 +309,4 @@ console.log(totalPorProduto);
 console.log('Produto mais lucrativo:'); 
  
 console.log(`${maisLucrativo.nome} com R$ ${maisLucrativo.totalVendas} em vendas.`);
+
